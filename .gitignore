@@ -11,6 +11,7 @@
 *.whl
 dist
 build
+docs
 eggs
 parts
 bin

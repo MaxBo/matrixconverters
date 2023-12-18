@@ -1,5 +1,5 @@
 ﻿Welcome to the Matrixconverters documentation!
-==========================================
+=================================================
 Matrixconverters has been developed to read and write PTV Matrices as xarray-Datasets
 
 .. mdinclude:: ../README.md

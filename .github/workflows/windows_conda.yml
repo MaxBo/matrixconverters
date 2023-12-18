@@ -45,8 +45,7 @@ jobs:
         LIBARCHIVE: C:\Miniconda\Library\bin\archive.dll
       run: |
         (
-        cd matrixconverters
-        conda build --python ${{ matrix.python-version }} --no-test conda.recipe
+        conda build --python ${{ matrix.python-version }} --no-test matrixconverters\conda.recipe
         conda install -c local -c conda-forge -n test-conda matrixconverters
         )
 
@@ -79,6 +78,7 @@ jobs:
       run: |
         (
         conda activate test-wheels
+        cd matrixconverters
         pip install .
         python -m pytest --pyargs matrixconverters
         python -m build -n .
