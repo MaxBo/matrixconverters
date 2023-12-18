@@ -18,7 +18,7 @@ jobs:
       uses: s-weigand/setup-conda@v1
       with:
         update-conda: true
-        python-version: 3.7
+        python-version: 3.11
         conda-channels: MaxBo, conda-forge, defaults
 
     - name: Install dependencies and set channels
