@@ -36,9 +36,9 @@ classifiers = [
 ]
 
 [project.urls]
-"Documentation" = "https://maxbo.github.io/cythonarrays/"
-"Source" = "https://github.com/MaxBo/cythonarrays/"
-"Issue Tracker" = "https://github.com/MaxBo/cythonarrays/issues"
+"Documentation" = "https://maxbo.github.io/matrixconverters/"
+"Source" = "https://github.com/MaxBo/matrixconverters/"
+"Issue Tracker" = "https://github.com/MaxBo/matrixconverters/issues"
 
 [tool.setuptools.dynamic]
 version = {attr = "matrixconverters.__version__"}
