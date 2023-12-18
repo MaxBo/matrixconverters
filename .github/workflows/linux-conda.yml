@@ -48,7 +48,7 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@4.1.7
       with:
         branch: gh-pages # The branch the action should deploy to.
-        folder: ../docs # The folder the action should deploy.
+        folder: docs # The folder the action should deploy.
 
     - name: Upload files for matrixconverters
       env:
