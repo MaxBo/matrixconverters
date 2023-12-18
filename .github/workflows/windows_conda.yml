@@ -111,7 +111,7 @@ jobs:
       run: |
         (
         mamba activate base
-        twine upload --skip-existing -p ${{ secrets.PYPI_API_TOKEN_MATRIXCONVERTERS }} dist\*
+        twine upload --skip-existing -p ${{ secrets.PYPI_MATRIXCONVERTERS }} dist\*
         )
 
     - name: Setup tmate session
