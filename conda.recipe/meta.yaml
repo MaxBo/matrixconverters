@@ -31,6 +31,6 @@ test:
     - py.test --pyargs matrixconverters
 
 about:
-  home: https://maxbo.github.io/cythonarrays
+  home: https://maxbo.github.io/matrixconverters
   license: GPL2
-summary: 'cython cdef-class to facilitate numpy-arrays as attributes..'
+summary: 'package to read and write PTV-Visum Matrix Formats'
