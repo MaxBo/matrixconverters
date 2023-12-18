@@ -31,7 +31,7 @@ jobs:
       run: |
         export TMPDIR=${{ runner.TEMP }}
         export CONDA_BLD_PATH=$TMPDIR
-        conda build --python ${{ matrix.python-version }} matrixconverters/conda.recipe
+        conda build --python ${{ matrix.python-version }} conda.recipe
 
     - name: Create Docs
       if: ${{ matrix.python-version == '3.12' }}

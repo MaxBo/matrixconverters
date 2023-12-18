@@ -45,7 +45,7 @@ jobs:
         LIBARCHIVE: C:\Miniconda\Library\bin\archive.dll
       run: |
         (
-        conda build --python ${{ matrix.python-version }} --no-test matrixconverters\conda.recipe
+        conda build --python ${{ matrix.python-version }} --no-test conda.recipe
         conda install -c local -c conda-forge -n test-conda matrixconverters
         )
 
@@ -74,7 +74,7 @@ jobs:
         anaconda -t %ANACONDA_TOKEN% upload --skip-existing --user %ANACONDA_USERNAME% %CONDA_BLD_PATH%\win-64\matrixconverters-*.tar.bz2
         )
 
-    - name: Build wheel and run tests for cythoninstallhelpers, cythonarrays, matrixconverters
+    - name: Build wheel and run tests for matrixconverters
       run: |
         (
         conda activate test-wheels
