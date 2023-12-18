@@ -79,6 +79,7 @@ jobs:
         (
         conda activate test-wheels
         cd matrixconverters
+        echo "build matrixconverters from folder %CD%"
         pip install .
         python -m pytest --pyargs matrixconverters
         python -m build -n .
@@ -90,6 +91,7 @@ jobs:
       run: |
         (
         conda activate test-wheels
+        echo "build matrixconverters -e from folder %CD%"
         pip install -e .
         py.test --cov=src --cov-report xml --pyargs matrixconverters
         coverage xml
