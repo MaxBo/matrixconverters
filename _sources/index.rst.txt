@@ -5,7 +5,7 @@ Matrixconverters has been developed to read and write PTV Matrices as xarray-Dat
 Readme File
 ===========
 
-.. mdinclude:: ../README.md
+.. mdinclude:: ../../README.md
 
 This documentation contains
 =================================
