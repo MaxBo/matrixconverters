@@ -5,7 +5,6 @@
 [![codecov](https://codecov.io/gh/MaxBo/matrixconverters/branch/master/graph/badge.svg)](https://codecov.io/gh/MaxBo/matrixconverters)
 
 
-##matrixconverters:
 [![PyPI version](https://badge.fury.io/py/matrixconverters.svg)](https://badge.fury.io/py/matrixconverters)
 [![Anaconda-Server Badge](https://anaconda.org/maxbo/matrixconverters/badges/version.svg)](https://anaconda.org/maxbo/matrixconverters)
 
