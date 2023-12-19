@@ -1,7 +1,7 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 [![Build Status Linux](https://github.com/MaxBo/matrixconverters/actions/workflows/linux-conda.yml/badge.svg)](https://github.com/MaxBo/matrixconverters/actions/workflows/linux-conda.yml)
-[![Build Status Windows](https://github.com/MaxBo/matrixconverters/actions/workflows/windows-conda.yml/badge.svg)](https://github.com/MaxBo/matrixconverters/actions/workflows/windows-conda.yml)
+[![Build Status Windows](https://github.com/MaxBo/matrixconverters/actions/workflows/windows_conda.yml/badge.svg)](https://github.com/MaxBo/matrixconverters/actions/workflows/windows_conda.yml)
 [![codecov](https://codecov.io/gh/MaxBo/matrixconverters/branch/master/graph/badge.svg)](https://codecov.io/gh/MaxBo/matrixconverters)
 
 

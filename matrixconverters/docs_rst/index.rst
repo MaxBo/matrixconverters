@@ -1,19 +1,13 @@
-﻿Welcome to the Matrixconverters documentation!
-=================================================
+Welcome to the Matrixconverters documentation!
+==============================================
 Matrixconverters has been developed to read and write PTV Matrices as xarray-Datasets
+
+Readme File
+===========
 
 .. mdinclude:: ../README.md
 
 This documentation contains
-=================================
-Contents:
-
-Description
-
-.. toctree::
-   :maxdepth: 3
-
-
 =================================
 
 Code Documentation
