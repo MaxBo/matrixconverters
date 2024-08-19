@@ -8,6 +8,8 @@
 [![PyPI version](https://badge.fury.io/py/matrixconverters.svg)](https://badge.fury.io/py/matrixconverters)
 [![Anaconda-Server Badge](https://anaconda.org/maxbo/matrixconverters/badges/version.svg)](https://anaconda.org/maxbo/matrixconverters)
 
+[Changelog](CHANGELOG.md)
+
 tools to read and write matrices in the format or PTV VISUM
 
 It implements:
