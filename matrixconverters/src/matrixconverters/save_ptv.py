@@ -228,7 +228,7 @@ class SavePTV(object):
             df_larger_0.to_csv(f, sep=' ', header=False)
 
             zone_no = self.ds.zone_no.data
-            n_zones = self.ds.dims['zone_no']
+            n_zones = self.ds.sizes['zone_no']
 
             if 'zone_name' in self.ds:
                 f.write('* Netzobjektnamen\n')

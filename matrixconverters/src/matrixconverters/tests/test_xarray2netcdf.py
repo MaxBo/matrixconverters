@@ -5,7 +5,9 @@ import pytest
 import numpy as np
 import xarray as xr
 from matrixconverters.xarray2netcdf import xr2netcdf
-from h5py.version import hdf5_version
+import h5py
+
+hdf5_version = h5py.h5.get_libversion()
 
 
 @pytest.fixture(scope='class')
@@ -44,7 +46,7 @@ class TestSaveReadxr2netcdf:
         np.testing.assert_array_equal(ds_saved.zone_name, ds.zone_name)
 
     @pytest.mark.xfail(
-        (hdf5_version < '1.18'),
+        (hdf5_version < (1, 18)),
         reason='''Hdf5 cannot use filepaths with non-ascii-characters
         - on windows it works locally, but not on appveyor - on linux it failes''')
     def test_02_save_ds_with_umlaut(self, ds: xr.Dataset, fp_dataset_with_umlaut: str):
