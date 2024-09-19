@@ -519,9 +519,9 @@ class ReadPTVMatrix(xr.Dataset):
         :
             the value read as nt
         """
-        line = f.readline().strip()
+        line = f.readline().strip(' \r\n')
         while not line or line.startswith("*"):
-            line = f.readline()
+            line = f.readline().strip(' \r\n')
         value = int(line)
         return value
 
@@ -545,9 +545,9 @@ class ReadPTVMatrix(xr.Dataset):
         n_total = len(flat_arr)
         pos_from = 0
         while pos_from < n_total:
-            line = f.readline()
-            while line.startswith("*"):
-                line = f.readline()
+            line = f.readline().strip(' \r\n')
+            while not line or line.startswith("*"):
+                line = f.readline().strip(' \r\n')
             row = np.fromstring(line, sep=sep, dtype=arr.dtype)
             pos_to = pos_from + len(row)
             flat_arr[pos_from:pos_to] = row
@@ -569,7 +569,7 @@ class ReadPTVMatrix(xr.Dataset):
         """
         rows = deque()
         for line in f:
-            row = line.strip()
+            row = line.strip(' \r\n')
             if not row or row.startswith("*"):
                 continue
             if row.startswith('$'):
