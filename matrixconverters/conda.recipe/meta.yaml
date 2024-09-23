@@ -19,8 +19,8 @@ requirements:
 
   run:
     - python
-    - numpy>=1.12
-    - xarray
+    - numpy
+    - xarray >=2024
     - h5netcdf
     - pytest-cov
 
