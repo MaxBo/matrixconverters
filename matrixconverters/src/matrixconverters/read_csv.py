@@ -51,8 +51,8 @@ class ReadOFormat(xr.Dataset):
         data_cols = cols_matrix
         pkey = target_cols[:2]
 
-        da = self.read_file_to_da(data_cols, filename, target_cols, pkey)
-        self['matrix'] = da['values']
+        ds = self.read_file_to_ds(data_cols, filename, target_cols, pkey)
+        self['matrix'] = ds['values']
         m = self['matrix']
         m.data[np.isnan(m.data)] = 0
 
@@ -73,23 +73,23 @@ class ReadOFormat(xr.Dataset):
         pkey = target_cols[0]
         col_name = target_cols[1]
 
-        da = self.read_file_to_da(data_cols, filename, target_cols, pkey)
+        ds = self.read_file_to_ds(data_cols, filename, target_cols, pkey)
         dims = self._target_cols_zones[:1] + self._target_cols_matrix[:2]
         # set as origins and destinations
         for dim in dims:
-            renamed_da = da.rename({pkey: dim})
-            self[dim] = renamed_da[dim]
-            name_dim = 'name_{}'.format(dim)
+            renamed_ds = ds.rename({pkey: dim})
+            self[dim] = renamed_ds[dim]
+            name_dim = f'name_{dim}'
             self.coords[name_dim] = xr.IndexVariable(dims=[dim],
-                                                     data=renamed_da[col_name])
+                                                     data=renamed_ds[col_name])
 
-    def read_file_to_da(self,
+    def read_file_to_ds(self,
                         data_cols: Iterable[str],
                         filename: str,
                         target_cols: Iterable[str],
-                        pkey: str) -> xr.DataArray:
+                        pkey: str) -> xr.Dataset:
         """
-        reads a file into a DataArray
+        reads a file into a Dataset
 
         Parameters
         ----------
@@ -105,7 +105,7 @@ class ReadOFormat(xr.Dataset):
         Returns
         -------
         :
-            the DataArray with the results
+            the Dataset with the results
         """
         df = pd.read_csv(filename, usecols=data_cols)
         if not data_cols:
@@ -119,5 +119,5 @@ class ReadOFormat(xr.Dataset):
                                target_cols))
         df.rename(columns=rename_cols, inplace=True)
 
-        da = df.set_index(pkey).sort_index().to_xarray()
-        return da
+        ds = df.set_index(pkey).sort_index().to_xarray()
+        return ds
