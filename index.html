@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5b801204" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=bd074a33" />
     
-    <script src="_static/documentation_options.js?v=bb516dca"></script>
+    <script src="_static/documentation_options.js?v=8ca9e7a0"></script>
     <script src="_static/doctools.js?v=d248f5b3"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     
@@ -61,7 +61,8 @@
 <li><p>Binary formats: BI-Format, BK-Format, BL-Format</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># read a matrix into a xarray-Dataset</span>
-<span class="kn">from</span> <span class="nn">matrixconverters</span> <span class="kn">import</span> <span class="n">ReadPTVMatrix</span><span class="p">,</span> <span class="n">SavePTVMatrix</span>
+<span class="kn">from</span> <span class="nn">matrixconverters.save_ptv</span> <span class="kn">import</span> <span class="n">SavePTV</span>
+<span class="kn">from</span> <span class="nn">matrixconverters.read_ptv</span> <span class="kn">import</span> <span class="n">ReadPTVMatrix</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">ReadPTVMatrix</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
 
 <span class="c1"># save a xr.Dataset as PTV-Matrix</span>
@@ -203,7 +204,7 @@ in the channel <em>MaxBo</em> in <a class="reference external" href="https://ana
     </div>
     <div class="footer" role="contentinfo">
     &#169; Copyright Gertz Gutsche Rümenapp.
-      Last updated on Aug 19, 2024.
+      Last updated on Sep 23, 2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
