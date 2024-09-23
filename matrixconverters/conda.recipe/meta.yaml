@@ -20,7 +20,7 @@ requirements:
   run:
     - python
     - numpy
-    - xarray >=2024
+    - xarray >=2022
     - h5netcdf
     - pytest-cov
 
