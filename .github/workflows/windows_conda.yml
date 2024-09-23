@@ -38,7 +38,7 @@ jobs:
       run: |
         (
         mamba install -n base "conda>=23.7" conda-build conda-verify anaconda-client boa twine
-        mamba create -n test-wheels python=${{ matrix.python-version }} numpy pytest-cov build
+        mamba create -n test-wheels python=${{ matrix.python-version }} numpy pytest-cov
         mamba create -n test-conda python=${{ matrix.python-version }} numpy pytest-cov
         )
 
@@ -84,6 +84,7 @@ jobs:
         conda activate test-wheels
         cd matrixconverters
         echo "build matrixconverters from folder %CD%"
+        pip install build
         pip install .
         python -m pytest --pyargs matrixconverters
         python -m build -n .

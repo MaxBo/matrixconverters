@@ -22,7 +22,8 @@ It can read and write the following formats:
 
 ```
 # read a matrix into a xarray-Dataset
-from matrixconverters import ReadPTVMatrix, SavePTVMatrix
+from matrixconverters.save_ptv import SavePTV
+from matrixconverters.read_ptv import ReadPTVMatrix
 ds = ReadPTVMatrix(filepath)
 
 # save a xr.Dataset as PTV-Matrix
