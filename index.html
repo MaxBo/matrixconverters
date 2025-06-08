@@ -61,19 +61,19 @@
 <li><p>Binary formats: BI-Format, BK-Format, BL-Format</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># read a matrix into a xarray-Dataset</span>
-<span class="kn">from</span> <span class="nn">matrixconverters.save_ptv</span> <span class="kn">import</span> <span class="n">SavePTV</span>
-<span class="kn">from</span> <span class="nn">matrixconverters.read_ptv</span> <span class="kn">import</span> <span class="n">ReadPTVMatrix</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matrixconverters.save_ptv</span><span class="w"> </span><span class="kn">import</span> <span class="n">SavePTV</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matrixconverters.read_ptv</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReadPTVMatrix</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">ReadPTVMatrix</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
 
 <span class="c1"># save a xr.Dataset as PTV-Matrix</span>
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
 <span class="n">da</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">zones</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">])</span>
 <span class="n">names</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">([</span><span class="s1">&#39;A-Town&#39;</span><span class="p">,</span> <span class="s1">&#39;B-Village&#39;</span><span class="p">,</span> <span class="s1">&#39;C-City&#39;</span><span class="p">])</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">({</span><span class="s1">&#39;matrix&#39;</span><span class="p">:</span> <span class="n">da</span><span class="p">,</span>
                  <span class="s1">&#39;zone_no&#39;</span><span class="p">:</span> <span class="n">zones</span><span class="p">,</span>
                  <span class="s1">&#39;zone_name&#39;</span><span class="p">:</span> <span class="n">names</span><span class="p">,})</span>
-<span class="kn">from</span> <span class="nn">matrixconverters.save_ptv</span> <span class="kn">import</span> <span class="n">SavePTV</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matrixconverters.save_ptv</span><span class="w"> </span><span class="kn">import</span> <span class="n">SavePTV</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">SavePTV</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
 <span class="n">s</span><span class="o">.</span><span class="n">savePTVMatrix</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">matrix_fn_out</span><span class="p">,</span> <span class="n">file_type</span><span class="o">=</span><span class="s1">&#39;BK&#39;</span><span class="p">)</span>
 </pre></div>
@@ -83,13 +83,13 @@
 <li><p>Programmsystem Verkehr by Software-Kontor Helmert-Hilke)</p></li>
 <li><p>File-Types CC and CN</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matrixconverters.save_ptv</span> <span class="kn">import</span> <span class="n">SavePTV</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matrixconverters.save_ptv</span><span class="w"> </span><span class="kn">import</span> <span class="n">SavePTV</span>
 <span class="n">s</span> <span class="o">=</span> <span class="n">SavePTV</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
 <span class="n">s</span><span class="o">.</span><span class="n">savePSVMatrix</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">matrix_fn_out</span><span class="p">,</span> <span class="n">ftype</span><span class="o">=</span><span class="s1">&#39;CC&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Export xarray-Dataset as compressed NetCDF-File</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matrixconverters.xarray2netcdf</span> <span class="kn">import</span> <span class="n">xarray2netcdf</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matrixconverters.xarray2netcdf</span><span class="w"> </span><span class="kn">import</span> <span class="n">xarray2netcdf</span>
 <span class="n">xarray2netcdf</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">file_path</span><span class="p">)</span>
 
 <span class="n">ds_saved</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
@@ -204,7 +204,7 @@ in the channel <em>MaxBo</em> in <a class="reference external" href="https://ana
     </div>
     <div class="footer" role="contentinfo">
     &#169; Copyright Gertz Gutsche Rümenapp.
-      Last updated on Sep 23, 2024.
+      Last updated on Jun 08, 2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
