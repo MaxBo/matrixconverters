@@ -29,7 +29,8 @@ jobs:
         auto-activate-base: true
         activate-environment: ""
         miniforge-version: latest
-        channels: conda-forge
+        mamba-version: "*"
+        channels: conda-forge,defaults
       env:
         TMPDIR: ${{ runner.TEMP }}
         CONDA_BLD_PATH: env.TMPDIR
@@ -75,7 +76,7 @@ jobs:
       run: |
         (
         mamba activate base
-        anaconda -t %ANACONDA_TOKEN% upload --skip-existing --user %ANACONDA_USERNAME% %CONDA_BLD_PATH%\win-64\matrixconverters-*.tar.bz2
+        anaconda -t %ANACONDA_TOKEN% upload --skip-existing --user %ANACONDA_USERNAME% %CONDA_BLD_PATH%\win-64\matrixconverters-*.conda
         )
 
     - name: Build wheel and run tests for matrixconverters
