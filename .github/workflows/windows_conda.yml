@@ -99,6 +99,7 @@ jobs:
         conda activate test-wheels
         cd matrixconverters
         echo "build matrixconverters -e from folder %CD%"
+        pip install pytest-cov
         pip install -e .
         py.test --cov=src --cov-report xml --pyargs matrixconverters
         coverage xml
