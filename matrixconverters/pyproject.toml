@@ -14,6 +14,7 @@ dependencies = [
     "numpy",
     "xarray",
     "h5netcdf",
+    "setuptools",
 ]
 
 description = "package to read and write PTV-Visum Matrix Formats"
