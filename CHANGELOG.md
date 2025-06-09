@@ -2,7 +2,11 @@
 
 
 ## [Unreleased]
+### Added
+### Changed
+### Removed
 
+## [1.3.3] - 2025-06-09
 ### Added
 - support for python 3.13
 
@@ -41,7 +45,8 @@
 
 
 
-[unreleased]: https://github.com/MaxBo/matrixconverters/compare/v1.3.2...HEAD
+[unreleased]: https://github.com/MaxBo/matrixconverters/compare/v1.3.3...HEAD
+[1.3.3]: https://github.com/MaxBo/matrixconverters/compare/v1.3.2...v1.3.3
 [1.3.2]: https://github.com/MaxBo/matrixconverters/compare/v1.3.1...v1.3.2
 [1.3.1]: https://github.com/MaxBo/matrixconverters/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/MaxBo/matrixconverters/releases/tag/v1.3.0
