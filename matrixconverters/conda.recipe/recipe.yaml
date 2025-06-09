@@ -1,0 +1,41 @@
+schema_version: 1
+
+context:
+  version_str: "\"load_file_regex(load_file='src/matrixconverters/_version | py', regex_pattern='^[_]{0,2}version[_]{0,2}\\\\s*=\\\\s*[\\'\\\\\"]([^\\'\\\\\"]*)[\\'\\\\\"]')\""
+
+package:
+  name: matrixconverters
+  version: ${{ version_str[1] }}
+
+source:
+  path: ../
+
+build:
+  number: 0
+  script:
+    secrets:
+      - TMPDIR
+
+requirements:
+  build:
+    - python
+    - setuptools>=61.0
+  run:
+    - python
+    - numpy
+    - xarray >=2022
+    - h5netcdf
+    - pytest-cov
+
+tests:
+  - requirements:
+      run:
+        - pytest-cov
+    script:
+      - py.test --pyargs matrixconverters
+
+about:
+  license: NGPL
+  homepage: https://maxbo.github.io/matrixconverters
+
+  summary: package to read and write PTV-Visum Matrix Formats
