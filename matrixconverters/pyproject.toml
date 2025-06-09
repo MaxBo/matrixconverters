@@ -13,7 +13,6 @@ dynamic = ["version"]
 dependencies = [
     "numpy",
     "xarray",
-    "h5py",
     "h5netcdf",
 ]
 

@@ -80,6 +80,8 @@ jobs:
         )
 
     - name: Build wheel and run tests for matrixconverters
+      env:
+        PIP_PREFER_BINARY: 1
       run: |
         (
         conda activate test-wheels
