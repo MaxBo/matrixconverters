@@ -28,7 +28,7 @@ test:
   requires:
     - pytest-cov
   commands:
-    - py.test --pyargs matrixconverters
+    - pytest --pyargs matrixconverters
 
 about:
   home: https://maxbo.github.io/matrixconverters
