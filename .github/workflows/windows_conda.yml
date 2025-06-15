@@ -50,6 +50,7 @@ jobs:
         LIBARCHIVE: C:\Miniconda\Library\bin\archive.dll
       run: |
         (
+        mamba activate base
         rattler-build build --recipe .
         )
 
@@ -63,13 +64,14 @@ jobs:
 
       run: |
         (
+        mamba activate base
         rattler-build upload anaconda win-64\matrixconverters-*.conda
         )
 
     - name: Build wheel and run tests for matrixconverters
       run: |
         (
-        conda activate test-wheels
+        mamba activate test-wheels
         cd matrixconverters
         echo "build matrixconverters from folder %CD%"
         pip install build
@@ -83,7 +85,7 @@ jobs:
       if: ${{ matrix.python-version == '3.13' }}
       run: |
         (
-        conda activate test-wheels
+        mamba activate test-wheels
         cd matrixconverters
         echo "build matrixconverters -e from folder %CD%"
         pip install -e .
