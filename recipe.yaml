@@ -8,34 +8,32 @@ package:
   version: ${{ version_str[1] }}
 
 source:
-  path: ../
+  path: ./matrixconverters
 
 build:
-  number: 0
-  script:
-    secrets:
-      - TMPDIR
+  script: ${{ PYTHON }} -m pip install .
 
 requirements:
-  build:
+  host:
     - python
+    - pip
     - setuptools>=61.0
   run:
     - python
     - numpy
     - xarray >=2022
     - h5netcdf
-    - pytest-cov
+    #- pytest-cov
+    - setuptools>=61.0
 
 tests:
-  - requirements:
+  - script:
+    - pytest --pyargs matrixconverters
+    requirements:
       run:
         - pytest-cov
-    script:
-      - py.test --pyargs matrixconverters
 
 about:
   license: NGPL
   homepage: https://maxbo.github.io/matrixconverters
-
   summary: package to read and write PTV-Visum Matrix Formats
