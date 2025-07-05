@@ -65,7 +65,14 @@ jobs:
       run: |
         (
         mamba activate base
-        for i in (find ${{ env.CONDA_BLD_PATH }}\win-64 -name 'matrixconverters-*.conda' -print ); do
+
+        {
+        echo 'FILELIST<<EOF'
+        find ${{ env.CONDA_BLD_PATH }}\win-64 -name 'matrixconverters-*.conda' -print
+        echo EOF
+        } >> "$GITHUB_ENV"
+
+        for i in $FILELIST; do
           rattler-build upload anaconda ${{ env.CONDA_BLD_PATH }}\win-64\${i}
         done
         )
