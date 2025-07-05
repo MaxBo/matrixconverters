@@ -65,7 +65,9 @@ jobs:
       run: |
         (
         mamba activate base
-        rattler-build upload anaconda ${{ env.CONDA_BLD_PATH }}\win-64\matrixconverters-*.conda
+        for i in (find ${{ env.CONDA_BLD_PATH }}\win-64 -name 'matrixconverters-*.conda' -print ); do
+          rattler-build upload anaconda ${{ env.CONDA_BLD_PATH }}\win-64\${i}
+        done
         )
 
     - name: Build wheel and run tests for matrixconverters
