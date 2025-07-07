@@ -69,7 +69,10 @@ jobs:
         eval "$(mamba.exe shell hook --shell bash)"
         mamba activate base
 
-        for filename in ${{ env.CONDA_BLD_PATH }}/win-64/matrixconverters*.conda; do
+        cd ${{ env.CONDA_BLD_PATH }}
+
+        for filename in win-64/matrixconverters*.conda; do
+          echo "found ${filename}"
           [ -e "${filename}" ] || continue
           echo "upload ${filename} to anaconda"
           rattler-build upload anaconda ${filename}
