@@ -54,6 +54,12 @@ jobs:
         rattler-build build --recipe .
         )
 
+    - name: Find files matching "*.conda"
+      uses: jeertmans/filesfinder@latest
+      id: ff
+      with:
+        args: "-d ${{ env.CONDA_BLD_PATH }}\win-64 *.conda"
+
     - name: Upload package to conda-forge
 
       env:
@@ -66,13 +72,7 @@ jobs:
         (
         mamba activate base
 
-        {
-        echo 'FILELIST<<EOF'
-        find ${{ env.CONDA_BLD_PATH }}\win-64 -name 'matrixconverters-*.conda' -print
-        echo EOF
-        } >> "$GITHUB_ENV"
-
-        for i in $FILELIST; do
+        for %%i in (${{ steps.ff.outputs.files }}); do
           rattler-build upload anaconda ${{ env.CONDA_BLD_PATH }}\win-64\${i}
         done
         )
