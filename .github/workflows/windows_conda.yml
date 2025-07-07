@@ -66,6 +66,7 @@ jobs:
 
       run: |
         (
+        eval "$(mamba.exe shell hook --shell bash)"
         mamba activate base
 
         for filename in ${{ env.CONDA_BLD_PATH }}/win-64/matrixconverters*.conda; do
