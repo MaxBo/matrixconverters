@@ -58,7 +58,7 @@ jobs:
       uses: jeertmans/filesfinder@latest
       id: ff
       with:
-        args: "-d ${{ env.CONDA_BLD_PATH }}\win-64 *.conda"
+        args: "-d ${{ env.CONDA_BLD_PATH }}/win-64 *.conda"
 
     - name: Upload package to conda-forge
 
