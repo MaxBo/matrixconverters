@@ -75,7 +75,7 @@ jobs:
           echo "found ${filename}"
           [ -e "${filename}" ] || continue
           echo "upload ${filename} to anaconda"
-          rattler-build upload anaconda ${filename}
+          rattler-build upload anaconda --force ${filename}
         done
         )
 
