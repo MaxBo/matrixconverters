@@ -71,6 +71,7 @@ jobs:
 
         for filename in ${{ env.CONDA_BLD_PATH }}/win-64/matrixconverters*.conda; do
           [ -e "${filename}" ] || continue
+          echo "upload ${filename} to anaconda"
           rattler-build upload anaconda ${filename}
         done
         )
