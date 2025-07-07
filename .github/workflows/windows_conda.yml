@@ -38,51 +38,51 @@ jobs:
     - name: Install dependencies and set channels
       run: |
         (
-        mamba install -n base rattler-build twine
+        mamba install -n base "conda>=23.7" conda-build conda-verify anaconda-client rattler-build twine
         mamba create -n test-wheels python=${{ matrix.python-version }} numpy pytest-cov h5py
         mamba create -n test-conda python=${{ matrix.python-version }} numpy pytest-cov
         )
 
-    - name: build and test matrixconverters for python version
+    - name: build matrixconverters for python version
       env:
         CONDA_BLD_PATH: ${{ runner.TEMP }}
         TMPDIR: ${{ runner.TEMP }}
         LIBARCHIVE: C:\Miniconda\Library\bin\archive.dll
       run: |
         (
-        mamba activate base
-        rattler-build build --recipe .
+        conda build --python ${{ matrix.python-version }} --no-test matrixconverters\conda.recipe
+        conda install -c local -c conda-forge -n test-conda matrixconverters
         )
 
-    - name: Upload package to conda-forge
+    - name: test matrixconverters for python version
+      env:
+        CONDA_BLD_PATH: ${{ runner.TEMP }}
+        TMPDIR: ${{ runner.TEMP }}
+      run: |
+        (
+        mamba activate test-conda
+        python -m pytest --pyargs matrixconverters
+        echo "### All tests with conda passed! :rocket:" >> $GITHUB_STEP_SUMMARY
+        )
+
+    - name: Upload package to conda
 
       env:
         CONDA_BLD_PATH: ${{ runner.TEMP }}
-        ANACONDA_API_KEY: ${{ secrets.ANACONDA_GITHUBACTION_TOKEN }}
-        ANACONDA_OWNER: MaxBo
-      if: ${{ env.ANACONDA_API_KEY }}
-
-      shell: bash -el {0}
+        ANACONDA_TOKEN: ${{ secrets.ANACONDA_GITHUBACTION_TOKEN }}
+        ANACONDA_USERNAME: MaxBo
+      if: ${{ env.ANACONDA_TOKEN }}
 
       run: |
         (
-        eval "$(mamba.exe shell hook --shell bash)"
         mamba activate base
-
-        cd "${{ env.CONDA_BLD_PATH }}"
-
-        for filename in win-64/matrixconverters*.conda; do
-          echo "found ${filename}"
-          [ -e "${filename}" ] || continue
-          echo "upload ${filename} to anaconda"
-          rattler-build upload anaconda --force ${filename}
-        done
+        anaconda -t %ANACONDA_TOKEN% upload --skip-existing --user %ANACONDA_USERNAME% %CONDA_BLD_PATH%\win-64\matrixconverters-*.conda
         )
 
     - name: Build wheel and run tests for matrixconverters
       run: |
         (
-        mamba activate test-wheels
+        conda activate test-wheels
         cd matrixconverters
         echo "build matrixconverters from folder %CD%"
         pip install build
@@ -96,7 +96,7 @@ jobs:
       if: ${{ matrix.python-version == '3.13' }}
       run: |
         (
-        mamba activate test-wheels
+        conda activate test-wheels
         cd matrixconverters
         echo "build matrixconverters -e from folder %CD%"
         pip install -e .
