@@ -62,11 +62,15 @@ jobs:
         ANACONDA_OWNER: MaxBo
       if: ${{ env.ANACONDA_API_KEY }}
 
+      shell: bash
+
       run: |
         (
         mamba activate base
 
-        for %i in ( ${{ env.CONDA_BLD_PATH }}\win-64\matrixconverters*.conda ) do rattler-build upload anaconda ${i}
+        for filename in ${{ env.CONDA_BLD_PATH }}/win-64/matrixconverters*.conda; do
+          rattler-build upload anaconda ${filename}
+        done
         )
 
     - name: Build wheel and run tests for matrixconverters
