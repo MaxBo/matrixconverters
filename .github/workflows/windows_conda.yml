@@ -69,7 +69,7 @@ jobs:
         eval "$(mamba.exe shell hook --shell bash)"
         mamba activate base
 
-        cd ${{ env.CONDA_BLD_PATH }}
+        cd ${{ runner.TEMP }}
 
         for filename in win-64/matrixconverters*.conda; do
           echo "found ${filename}"
