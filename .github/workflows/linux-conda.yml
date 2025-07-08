@@ -27,12 +27,12 @@ jobs:
         activate-environment: true
         miniforge-version: latest
         mamba-version: "*"
-        conda-remove-defaults: true
         channels: MaxBo, conda-forge
+        conda-remove-defaults: true
 
     - name: Install dependencies and set channels
       run: |
-        mamba install conda-build conda-verify anaconda-client twine readme_renderer
+        mamba install conda-build anaconda-client twine readme_renderer
         mamba create -q -n test-environment python=${{ matrix.python-version }} pytest-cov
 
     - name: Build and test matrixconverters
