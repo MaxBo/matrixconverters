@@ -36,8 +36,7 @@ jobs:
     - name: Install Anaconda Client
       shell: cmd /C CALL {0}
       run: |
-        conda activate base
-        conda install -y anaconda-client
+        conda install -y -n base anaconda-client
 
     - name: Install dependencies and set channels
       shell: cmd /C CALL {0}
@@ -77,7 +76,7 @@ jobs:
       run: |
         (
         conda activate base
-        anaconda -t %ANACONDA_TOKEN% upload --skip-existing --user %ANACONDA_USERNAME% "%CONDA_PREFIX%\conda-bld\win-64\matrixconverters-*.conda"
+        conda run -n base anaconda -t %ANACONDA_TOKEN% upload --skip-existing --user %ANACONDA_USERNAME% "%CONDA_PREFIX%\conda-bld\win-64\matrixconverters-*.conda"
         )
 
     - name: Build wheel and run tests for matrixconverters
