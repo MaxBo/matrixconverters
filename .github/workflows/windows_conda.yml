@@ -31,16 +31,13 @@ jobs:
         miniforge-version: latest
         mamba-version: "*"
         channels: conda-forge
-      env:
-        TMPDIR: ${{ runner.TEMP }}
-        CONDA_BLD_PATH: ${{ runner.TEMP }}
+        conda-remove-defaults: true
 
-    - name: Show conda build directory
-      shell: cmd
+    - name: Install Anaconda Client
+      shell: cmd /C CALL {0}
       run: |
-        conda config --show bld_path
-        conda build --help
-        dir "%CONDA_PREFIX%\conda-bld\win-64"
+        conda activate base
+        conda install -y anaconda-client
 
     - name: Install dependencies and set channels
       shell: cmd /C CALL {0}
